@@ -1,6 +1,7 @@
-;==============================
-; 基本設定
-;==============================
+;;==============================
+;; 基本設定
+;;==============================
+
 
 ;; beepを消す
 (setq visible-bell t)
@@ -13,9 +14,6 @@
 
 ;; 行番号の表示設定
 (global-linum-mode 0)
-(set-face-attribute 'linum nil
-                    :foreground "#aaa"
-                    :background "#000")
 (setq linum-format "%04d ")
 
 ;; 行番号・桁番号を表示
@@ -58,16 +56,6 @@
 (setq whitespace-display-mappings
       '((tab-mark ?\t [?\u21E5 ?\t] [?\\ ?\t])))
 
-(defvar my/bg-color "#333")
-(set-face-attribute 'whitespace-trailing nil
-                    :background my/bg-color)
-(set-face-attribute 'whitespace-tab nil
-                    :background my/bg-color)
-(set-face-attribute 'whitespace-space nil
-                    :background my/bg-color)
-(set-face-attribute 'whitespace-empty nil
-                    :background my/bg-color)
-
 (setq whitespace-action '(auto-cleanup)) ; 保存前に自動でクリーンアップ
 (global-whitespace-mode 1)
 (global-set-key (kbd "C-x w") 'global-whitespace-mode)
@@ -105,9 +93,31 @@
 ;; toggle comment
 (global-set-key (kbd "M-/")  'comment-dwim)
 
-;==============================
-; Package Control
-;==============================
+;; system-type 判定
+;; from http://d.hatena.ne.jp/tomoya/20090807/1249601308
+(setq darwin-p (eq system-type 'darwin)
+      linux-p  (eq system-type 'gnu/linux)
+      carbon-p (eq system-type 'mac)
+      meadow-p (featurep 'meadow))
+
+;; Emacs と Mac のクリップボード共有
+;; from http://hakurei-shain.blogspot.com/2010/05/mac.html
+(defun copy-from-osx ()
+  (shell-command-to-string "pbpaste"))
+
+(defun paste-to-osx (text &optional push)
+  (let ((process-connection-type nil))
+    (let ((proc (start-process "pbcopy" "*Messages*" "pbcopy")))
+      (process-send-string proc text)
+      (process-send-eof proc))))
+
+(if (or darwin-p carbon-p)
+    (setq interprogram-cut-function 'paste-to-osx)
+  (setq interprogram-paste-function 'copy-from-osx))
+
+;;==============================
+;; Package Control
+;;==============================
 ;; refs: http://emacs-jp.github.io/packages/package-management/package-el.html
 
 ;; MELPA
@@ -132,6 +142,7 @@
   '(
     popwin
     helm
+    color-theme-solarized
     ))
 
 ;; install packages in my/favorite-packages which hasnt been installed yet
@@ -144,9 +155,9 @@
 ;; 2. press U, x
 
 
-;==============================
-; Package Settings
-;==============================
+;;==============================
+;; Package Settings
+;;==============================
 
 ;----------
 ; helm
@@ -160,14 +171,14 @@
 (define-key global-map (kbd "M-y")     'helm-show-kill-ring)
 (define-key global-map (kbd "C-c i")   'helm-imenu)
 (define-key global-map (kbd "C-x b")   'helm-buffers-list)
-;(define-key helm-map (kbd "C-h") 'delete-backward-char)
+(define-key helm-map (kbd "C-h") 'delete-backward-char)
 (define-key helm-find-files-map (kbd "C-h") 'delete-backward-char)
 (define-key helm-find-files-map (kbd "TAB") 'helm-execute-persistent-action)
 (define-key helm-read-file-map (kbd "TAB") 'helm-execute-persistent-action)
 
-;----------
-; popwin
-;----------
+;;----------
+;; popwin
+;;----------
 ;; refs: http://d.hatena.ne.jp/m2ym/20110120/1295524932
 ;;       https://github.com/m2ym/popwin-el
 (require 'popwin)
@@ -177,3 +188,23 @@
 (push '("^\*helm .+\*$" :regexp t) popwin:special-display-config)
 (push '("^\*helm-.+\*$" :regexp t) popwin:special-display-config)
 (push '("^\*Helm\s.+\*$" :regexp t) popwin:special-display-config)
+
+;;----------
+;; solarized
+;;---------
+;; refs: https://github.com/sellout/emacs-color-theme-solarized
+(load-theme 'solarized t)
+
+(add-hook 'after-make-frame-functions
+          (lambda (frame)
+            (set-frame-parameter frame
+                                 'background-mode
+                                 (if (display-graphic-p frame) 'light 'dark))
+                        (enable-theme 'solarized)))
+
+(custom-theme-set-faces
+ 'solarized
+ '(font-lock-comment-face ((t (:foreground "#b58900")))) ; Comment
+ '(font-lock-doc-face ((t (:foreground "#b58900")))) ; Comment
+ '(font-lock-comment-delimiter-face ; Comment
+   ((t (:foreground "#b58900")))))
