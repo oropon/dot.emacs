@@ -2,7 +2,6 @@
 ;; 基本設定
 ;;==============================
 
-
 ;; beepを消す
 (setq visible-bell t)
 
@@ -114,3 +113,9 @@
 (if (or darwin-p carbon-p)
     (setq interprogram-cut-function 'paste-to-osx)
   (setq interprogram-paste-function 'copy-from-osx))
+
+;;改行と同時にインデントも行う
+(global-set-key (kbd "C-m") 'newline-and-indent)
+
+;; find-functionをキー割り当てする
+(find-function-setup-keys)

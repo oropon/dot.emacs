@@ -34,7 +34,7 @@
 
 ;;----------
 ;; solarized
-;;---------
+;;----------
 ;; refs: https://github.com/sellout/emacs-color-theme-solarized
 (load-theme 'solarized t)
 
@@ -51,3 +51,49 @@
  '(font-lock-doc-face ((t (:foreground "#b58900")))) ; Comment
  '(font-lock-comment-delimiter-face ; Comment
    ((t (:foreground "#b58900")))))
+
+;;----------
+;; elscreen
+;;----------
+(elscreen-start)
+;;; タブを標準で非表示
+(setq elscreen-display-tab nil)        ; C-z T で toggle
+;;; タブの先頭に[X]を表示しない
+(setq elscreen-tab-display-kill-screen nil)
+;;; header-lineの先頭に[<->]を表示しない
+(setq elscreen-tab-display-control nil)
+
+;;----------
+;; open-junk-file
+;;----------
+;;;試行錯誤用ファイルを開くための設定
+(require 'open-junk-file)
+;; C-x C-zで試行錯誤ファイルを開く
+(global-set-key (kbd "C-x C-z") 'open-junk-file)
+
+;;----------
+;; lispxmp
+;;----------
+;;;式の評価結果を注釈するための設定
+(require 'lispxmp)
+;; emacs-lisp-modeでC-c C-dを押すと注釈される
+(define-key emacs-lisp-mode-map (kbd "C-c C-d") 'lispxmp)
+
+;;----------
+;; smartparens
+;;----------
+(smartparens-global-mode)
+(show-smartparens-global-mode)
+
+;;----------
+;; auto-async-byte-compile
+;;----------
+(require 'auto-async-byte-compile)
+;;自動バイトコンパイルを無効にするファイル名の正規表現
+(setq auto-async-byte-compile-exclude-files-regexp "/junk/")
+(add-hook 'emacs-lisp-mode-hook 'enable-auto-async-byte-compile-mode)
+(add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
+(add-hook 'lisp-interaction-mode-hook 'turn-on-eldoc-mode)
+(add-hook 'ielm-mode-hook 'turn-on-eldoc-mode)
+(setq eldoc-idle-delay 0.2) ;すぐに表示したい
+(setq eldoc-minor-mode-string "") ;モードラインにElDocと表示しない

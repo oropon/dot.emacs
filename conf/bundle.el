@@ -1,5 +1,5 @@
 ;;==============================
-;; Package Control
+;; package.el
 ;;==============================
 ;; refs: http://emacs-jp.github.io/packages/package-management/package-el.html
 
@@ -18,14 +18,22 @@
 (package-initialize)
 
 ;; Update package list
-;(package-refresh-contents)
+(package-refresh-contents)
 
 ;; Packages to be installed
 (defvar my/favorite-packages
   '(
-    popwin
+    auto-install
     helm
+    popwin
+    elscreen
+    elscreen-persist
     color-theme-solarized
+    open-junk-file
+    lispxmp
+    smartparens
+    auto-async-byte-compile
+    package
     ))
 
 ;; install packages in my/favorite-packages which hasnt been installed yet
@@ -36,3 +44,12 @@
 ;; How to upgrade installed package
 ;; 1. package-list-packages
 ;; 2. press U, x
+
+
+;;==============================
+;; auto-install.el
+;;==============================
+(require 'auto-install)
+(auto-install-update-emacswiki-package-name t)
+(auto-install-compatibility-setup)
+(setq ediff-window-setup-function 'ediff-setup-windows-plain)
