@@ -23,17 +23,47 @@
 ;; Packages to be installed
 (defvar my/favorite-packages
   '(
+    ;;----------
+    ;; 一般
+    ;;----------
+
+    ;; パッケージ管理
     auto-install
+    package
+
+    ;; helm
     helm
+
+    ;; セッション・ウィンドウ
     popwin
     elscreen
-    elscreen-persist
-    color-theme-solarized
-    open-junk-file
-    lispxmp
+
+    ;; 括弧
     smartparens
+
+    ;; 選択
+    multiple-cursors
+    expand-region
+
+    ;;----------
+    ;; 表示
+    ;;----------
+
+    ;; テーマ
+    color-theme-solarized
+
+    ;;----------
+    ;; 言語
+    ;;----------
+
+    ;; elisp
+    lispxmp
     auto-async-byte-compile
-    package
+
+    ;;----------
+    ;; misc
+    ;;----------
+    open-junk-file
     ))
 
 ;; install packages in my/favorite-packages which hasnt been installed yet

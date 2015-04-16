@@ -97,3 +97,20 @@
 (add-hook 'ielm-mode-hook 'turn-on-eldoc-mode)
 (setq eldoc-idle-delay 0.2) ;すぐに表示したい
 (setq eldoc-minor-mode-string "") ;モードラインにElDocと表示しない
+
+;;----------
+;; expand-region
+;;----------
+;; refs: http://qiita.com/ongaeshi/items/abd1016bf484c4e05ab1
+(require 'expand-region)
+(global-set-key (kbd "C-=") 'er/expand-region)
+(global-set-key (kbd "C-M-=") 'er/contract-region)
+
+;;----------
+;; multiple-cursors
+;;----------
+(require 'multiple-cursors)
+(global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
+(global-set-key (kbd "C->") 'mc/mark-next-like-this)
+(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
