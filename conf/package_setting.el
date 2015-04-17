@@ -148,3 +148,7 @@
 ;;----------
 ;;smartparens-ruby
 (require 'smartparens-ruby)
+
+;;----------
+;;flycheck
+(add-hook 'enh-ruby-mode-hook 'flycheck-mode)

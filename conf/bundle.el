@@ -62,6 +62,9 @@
     ;; 言語
     ;;----------
 
+    ;; 構文チェック
+    flycheck
+
     ;; Ruby
     enh-ruby-mode
     robe
