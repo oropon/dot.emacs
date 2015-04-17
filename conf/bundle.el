@@ -53,8 +53,17 @@
     color-theme-solarized
 
     ;;----------
+    ;; 補完
+    ;;----------
+
+    auto-complete
+
+    ;;----------
     ;; 言語
     ;;----------
+
+    ;; Ruby
+    enh-ruby-mode
 
     ;; elisp
     lispxmp
