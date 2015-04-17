@@ -95,8 +95,8 @@
 (add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
 (add-hook 'lisp-interaction-mode-hook 'turn-on-eldoc-mode)
 (add-hook 'ielm-mode-hook 'turn-on-eldoc-mode)
-(setq eldoc-idle-delay 0.2) ;すぐに表示したい
-(setq eldoc-minor-mode-string "") ;モードラインにElDocと表示しない
+(setq eldoc-idle-delay 0.2)           ;すぐに表示したい
+(setq eldoc-minor-mode-string "")     ;モードラインにElDocと表示しない
 
 ;;----------
 ;; expand-region
@@ -119,7 +119,7 @@
 ;; auto-complete
 ;;----------
 (global-auto-complete-mode 1)
-(setq ac-delay 0.01)                    ;補完表示までのディレイ
+(setq ac-delay 0.1)                     ;補完表示までのディレイ
 (setq ac-use-menu-map t)                ;補完メニュー内でC-n/C-p
 
 ;;----------
