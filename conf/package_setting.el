@@ -152,3 +152,9 @@
 ;;----------
 ;;flycheck
 (add-hook 'enh-ruby-mode-hook 'flycheck-mode)
+
+;;----------
+;;infruby
+(setq inf-ruby-default-implementation "pry")
+(setq inf-ruby-eval-binding "Pry.toplevel_binding")
+(add-hook 'inf-ruby-mode-hook 'ansi-color-for-comint-mode-on) ;riなどのエスケープシーケンスを処理し、色付けする
