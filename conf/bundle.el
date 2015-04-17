@@ -64,6 +64,7 @@
 
     ;; Ruby
     enh-ruby-mode
+    robe
 
     ;; elisp
     lispxmp

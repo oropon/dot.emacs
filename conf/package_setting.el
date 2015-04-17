@@ -135,3 +135,8 @@
 (add-to-list 'auto-mode-alist '("\\.ru$" . enh-ruby-mode))
 (add-to-list 'auto-mode-alist '("Gemfile$" . enh-ruby-mode))
 (add-to-list 'interpreter-mode-alist '("ruby" . enh-ruby-mode))
+
+;;----------
+;;robe
+(add-hook 'enh-ruby-mode-hook 'robe-mode)
+(add-hook 'robe-mode-hook 'ac-robe-setup)
