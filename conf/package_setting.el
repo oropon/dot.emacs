@@ -126,6 +126,8 @@
 ;; Ruby
 ;;----------
 
+;; ruby-block, ruby-end は smartparens-ruby で代用
+
 ;;----------
 ;;enh-ruby-mode
 (add-to-list 'auto-mode-alist '("\\.rb$" . enh-ruby-mode))
@@ -135,6 +137,8 @@
 (add-to-list 'auto-mode-alist '("\\.ru$" . enh-ruby-mode))
 (add-to-list 'auto-mode-alist '("Gemfile$" . enh-ruby-mode))
 (add-to-list 'interpreter-mode-alist '("ruby" . enh-ruby-mode))
+
+(setq enh-ruby-deep-indent-paren nil)
 
 ;;----------
 ;;robe
