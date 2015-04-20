@@ -69,6 +69,9 @@
     enh-ruby-mode
     robe
 
+    ;; Haskell
+    haskell-mode
+
     ;; elisp
     lispxmp
     auto-async-byte-compile

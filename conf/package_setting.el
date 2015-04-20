@@ -158,3 +158,33 @@
 (setq inf-ruby-default-implementation "pry")
 (setq inf-ruby-eval-binding "Pry.toplevel_binding")
 (add-hook 'inf-ruby-mode-hook 'ansi-color-for-comint-mode-on) ;riなどのエスケープシーケンスを処理し、色付けする
+
+
+;;----------
+;; Haskell
+;;----------
+
+;;----------
+;;haskell-mode
+;;(autoload 'haskell-mode "haskell-mode" nil t)
+;(autoload 'haskell-cabal "haskell-cabal" nil t)
+(add-to-list 'auto-mode-alist '("\\.hs$" . haskell-mode))
+(add-to-list 'interpreter-mode-alist '("runghc" . haskell-mode))
+(add-to-list 'interpreter-mode-alist '("runhaskell" . haskell-mode))
+
+;;----------
+;; ghc-mod
+(add-to-list 'exec-path (concat (getenv "HOME") "/.dotfiles/emacs/haskell/.cabal-sandbox/bin"))
+(add-to-list 'load-path (concat (getenv "HOME") "/.dotfiles/emacs/haskell/.cabal-sandbox/share/x86_64-osx-ghc-7.8.2/ghc-mod-4.1.1"))   ;office
+(add-to-list 'load-path (concat (getenv "HOME") "/.dotfiles/emacs/haskell/.cabal-sandbox/share/x86_64-osx-ghc-7.8.3/ghc-mod-5.2.1.1")) ;home
+(autoload 'ghc-init "ghc" nil t)
+(autoload 'ghc-debug "ghc" nil t)
+
+;;----------
+;; minor-mode
+(add-hook 'haskell-mode-hook (lambda () (ghc-init)))
+(add-hook 'haskell-mode-hook (lambda () (global-set-key (kbd "C-c t") 'ghc-show-type)))
+(add-hook 'haskell-mode-hook 'haskell-indent-mode)
+(add-hook 'haskell-mode-hook 'interactive-haskell-mode)
+(custom-set-variables
+ '(haskell-process-type 'cabal-repl))
