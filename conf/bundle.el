@@ -29,6 +29,7 @@
 
     ;; パッケージ管理
     auto-install
+    el-get
     package
 
     ;; helm
@@ -60,8 +61,8 @@
     ;; 日本語インクリメンタルサーチ
     migemo
 
-    ;; バッファ内
-    
+    ;; el-get で color-moccur と moccur-edit をinstall
+
     ;;----------
     ;; 表示
     ;;----------
@@ -117,7 +118,51 @@
 ;;==============================
 ;; auto-install.el
 ;;==============================
+;; auto-installはpackage.elで入れている
 (require 'auto-install)
 (auto-install-update-emacswiki-package-name t)
 (auto-install-compatibility-setup)
 (setq ediff-window-setup-function 'ediff-setup-windows-plain)
+
+;;==============================
+;; el-get.el
+;;==============================
+;; auto-installel-getはpackage.elで入れている
+;; refs: http://emacs-jp.github.io/packages/package-management/package-el.html
+
+(setq el-get-dir "~/.emacs.d/elisp/el-get/")
+
+(unless (require 'el-get nil 'noerror)
+  (with-current-buffer
+      (url-retrieve-synchronously
+       "https://raw.github.com/dimitri/el-get/master/el-get-install.el")
+    (goto-char (point-max))
+    (eval-print-last-sexp)))
+
+(el-get 'sync)
+
+;;; define el-get repository
+(setq el-get-sources
+      '(
+        (:name color-moccur
+               :website "https://github.com/myuhe/color-moccur.el"
+               :description "multi-buffer occur (grep) mode"
+               :type github
+               :pkgname "myuhe/color-moccur.el")
+        (:name moccur-edit
+               :website "https://github.com/myuhe/moccur-edit.el"
+               :description "apply replaces to multiple files"
+               :type github
+               :pkgname "myuhe/moccur-edit.el"
+               :depends (color-moccur))
+        ))
+
+;; Packages to install from el-get
+(defvar my/el-get-packages
+  '(
+    ;; 検索/置換
+    color-moccur
+    moccur-edit
+    )
+  "A list of packages to install from el-get at launch.")
+(el-get 'sync my/el-get-packages)
