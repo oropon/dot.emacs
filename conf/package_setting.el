@@ -200,3 +200,11 @@
 ;; undo-tree
 ;;----------
 (global-undo-tree-mode)
+
+;;----------
+;; smart-newline
+;;----------
+(global-set-key (kbd "C-m") 'smart-newline)
+(add-hook 'enh-ruby-mode-hook 'smart-newline-mode)
+(add-hook 'haskell-mode-hook 'smart-newline-mode)
+(add-hook 'emacs-lisp-mode-hook 'smart-newline-mode)
