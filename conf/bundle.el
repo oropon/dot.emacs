@@ -45,6 +45,9 @@
     multiple-cursors
     expand-region
 
+    ;; undo/redo
+    undo-tree
+
     ;;----------
     ;; 表示
     ;;----------
