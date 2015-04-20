@@ -77,6 +77,11 @@
     auto-async-byte-compile
 
     ;;----------
+    ;; git
+    ;;----------
+    magit
+
+    ;;----------
     ;; misc
     ;;----------
     open-junk-file

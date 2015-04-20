@@ -188,3 +188,10 @@
 (add-hook 'haskell-mode-hook 'interactive-haskell-mode)
 (custom-set-variables
  '(haskell-process-type 'cabal-repl))
+
+;;----------
+;; magit
+;;----------
+;; surpress warning
+(setq magit-last-seen-setup-instructions "1.4.0")
+(global-set-key (kbd "C-x g") 'magit-status)
