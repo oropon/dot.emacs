@@ -138,3 +138,15 @@ For example, type \\[event-apply-meta-control-modifier] % to enter Meta-Control-
              (event-apply-modifier (read-event) 'control 26 "C-")
              'meta 27 "M-")))
 (define-key function-key-map (kbd "C-x @ M") 'event-apply-meta-control-modifier)
+
+;;window移動をC-o pnfbで出来るようにする
+(define-prefix-command 'windmove-map)
+(global-set-key (kbd "C-o") 'windmove-map)
+(define-key windmove-map "p" 'windmove-up)
+(define-key windmove-map "n" 'windmove-down)
+(define-key windmove-map "f" 'windmove-right)
+(define-key windmove-map "b" 'windmove-left)
+(define-key windmove-map (kbd "C-p") 'windmove-up)
+(define-key windmove-map (kbd "C-n") 'windmove-down)
+(define-key windmove-map (kbd "C-f") 'windmove-right)
+(define-key windmove-map (kbd "C-b") 'windmove-left)
