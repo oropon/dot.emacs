@@ -46,6 +46,13 @@
  '(font-lock-comment-delimiter-face ; Comment
    ((t (:foreground "#b58900")))))
 
+(set-face-attribute 'whitespace-trailing nil
+                    :foreground "DeepPink"
+                    :underline t)
+(set-face-attribute 'whitespace-tab nil
+                    :foreground "LightSkyBlue"
+                    :underline t)
+
 ;;----------
 ;; elscreen
 ;;----------
