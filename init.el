@@ -4,8 +4,8 @@
 ;; 設定ファイル読み込み
 (setq load-path
       (append '(
-		"~/.emacs.d/conf"
-		) load-path))
+                "~/.emacs.d/conf"
+                ) load-path))
 
 (load "bundle")
 (load "meltingpot")
