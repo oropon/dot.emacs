@@ -155,3 +155,9 @@ For example, type \\[event-apply-meta-control-modifier] % to enter Meta-Control-
 (define-key windmove-map (kbd "C-n") 'windmove-down)
 (define-key windmove-map (kbd "C-f") 'windmove-right)
 (define-key windmove-map (kbd "C-b") 'windmove-left)
+
+;; dired
+(put 'dired-find-alternate-file 'disabled nil)
+(setq dired-dwim-target t)         ;diredを2つのウィンドウで開いている時に、デフォルトの移動orコピー先をもう一方のdiredで開いているディレクトリにする
+(setq dired-recursive-copies 'always)   ;ディレクトリを再帰的にコピーする
+(setq dired-isearch-filenames t)        ;diredバッファでC-sした時にファイル名だけにマッチするように
