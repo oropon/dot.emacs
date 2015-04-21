@@ -233,6 +233,12 @@
   (interactive)
   (helm-ag (projectile-project-root)))
 
+;;----------
+;; helm-projectile
+(global-set-key (kbd "M-t") 'helm-projectile)
+;; TODO: helm-projectile-* で便利なものがあればM-tからのコンビネーションで設定
+;; M-t t でhelm-projectileとか
+
 ;;---------
 ;; color-moccur
 (global-set-key (kbd "M-o") 'occur-by-moccur)

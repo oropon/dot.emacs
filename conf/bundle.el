@@ -51,6 +51,7 @@
 
     ;; project
     projectile
+    helm-projectile
 
     ;;----------
     ;; 入力
