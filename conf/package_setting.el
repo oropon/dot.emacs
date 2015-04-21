@@ -36,8 +36,8 @@
 ;; solarized
 ;;----------
 ;; refs: https://github.com/sellout/emacs-color-theme-solarized
-(load-theme 'solarized t)
 (set-frame-parameter nil 'background-mode 'dark)
+(load-theme 'solarized t)
 
 (custom-theme-set-faces
  'solarized
