@@ -54,6 +54,11 @@
                     :underline t)
 
 ;;----------
+;; projectile
+;;----------
+(projectile-global-mode)
+
+;;----------
 ;; elscreen
 ;;----------
 (elscreen-start)
@@ -210,9 +215,30 @@
 (add-hook 'haskell-mode-hook 'smart-newline-mode)
 (add-hook 'emacs-lisp-mode-hook 'smart-newline-mode)
 
+
+;;----------
+;; Search
+;;----------
+
+;;----------
+;; helm-ag
+(setq helm-ag-insert-at-point 'symbol)  ; 現在のシンボルをデフォルトのクエリにする
+(global-set-key (kbd "C-M-g") 'helm-ag)
+(global-set-key (kbd "C-M-k") 'backward-kill-sexp) ; 他のクエリに変更
+
+;; projectileと連携
+;; cf.) http://rubikitch.com/tag/helm-ag/
+(defun helm-projectile-ag ()
+  "Projectileと連携"
+  (interactive)
+  (helm-ag (projectile-project-root)))
+
+;;---------
+;; color-moccur
+(global-set-key (kbd "M-o") 'occur-by-moccur)
+
 ;;----------
 ;; migemo
-;;----------
 (add-to-list 'exec-path "/usr/local/bin")
 (setq migemo-dictionary "/usr/local/share/migemo/utf-8/migemo-dict")
 (setq migemo-command "cmigemo")

@@ -49,6 +49,9 @@
     ;; undo/redo
     undo-tree
 
+    ;; project
+    projectile
+
     ;;----------
     ;; 入力
     ;;----------
@@ -62,6 +65,14 @@
     migemo
 
     ;; el-get で color-moccur と moccur-edit をinstall
+
+    ;; 検索結果編集
+    wgrep
+    wdired
+
+    ;; ag
+    ag
+    helm-ag
 
     ;;----------
     ;; 表示

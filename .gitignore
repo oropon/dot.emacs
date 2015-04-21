@@ -4,3 +4,4 @@ el-get/
 elisp/
 *.elc
 ac-comphist.dat
+projectile-bookmarks.eld
