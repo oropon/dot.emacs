@@ -1,5 +1,5 @@
 ;; エラー時にトレース表示
-(setq debug-on-error t)
+;(setq debug-on-error t)
 
 ;; 設定ファイル読み込み
 (setq load-path

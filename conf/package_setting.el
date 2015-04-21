@@ -37,13 +37,7 @@
 ;;----------
 ;; refs: https://github.com/sellout/emacs-color-theme-solarized
 (load-theme 'solarized t)
-
-(add-hook 'after-make-frame-functions
-          (lambda (frame)
-            (set-frame-parameter frame
-                                 'background-mode
-                                 (if (display-graphic-p frame) 'light 'dark))
-                        (enable-theme 'solarized)))
+(set-frame-parameter nil 'background-mode 'dark)
 
 (custom-theme-set-faces
  'solarized
@@ -57,7 +51,7 @@
 ;;----------
 (elscreen-start)
 ;;; タブを標準で非表示
-(setq elscreen-display-tab nil)        ; C-z T で toggle
+(setq elscreen-display-tab t)        ; C-z T で toggle
 ;;; タブの先頭に[X]を表示しない
 (setq elscreen-tab-display-kill-screen nil)
 ;;; header-lineの先頭に[<->]を表示しない
@@ -212,6 +206,7 @@
 ;;----------
 ;; migemo
 ;;----------
+(add-to-list 'exec-path "/usr/local/bin")
 (setq migemo-dictionary "/usr/local/share/migemo/utf-8/migemo-dict")
 (setq migemo-command "cmigemo")
 (setq migemo-options '("-q" "--emacs"))

@@ -139,8 +139,6 @@
     (goto-char (point-max))
     (eval-print-last-sexp)))
 
-(el-get 'sync)
-
 ;;; define el-get repository
 (setq el-get-sources
       '(
