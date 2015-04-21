@@ -41,6 +41,36 @@
 (setq make-backup-files nil) ;; backup files
 (setq auto-save-default nil) ;; auto-save files
 
+;; system-type 判定
+;; from http://d.hatena.ne.jp/tomoya/20090807/1249601308
+(setq darwin-p (eq system-type 'darwin)
+      linux-p  (eq system-type 'gnu/linux)
+      carbon-p (eq system-type 'mac)
+      meadow-p (featurep 'meadow))
+
+;; Mac向け設定
+(when (or darwin-p carbon-p)
+  (if window-system
+      ;; Cocoa Emacs(Window mode)向け設定
+      (progn
+        ;; Font
+        (set-face-attribute 'default nil :family "Ricty" :height 140))
+    ;; Terminal向け設定
+    (progn
+      ;; ペーストボードの共有
+      ;; from http://hakurei-shain.blogspot.com/2010/05/mac.html
+      (defun copy-from-osx ()
+        (shell-command-to-string "pbpaste"))
+
+      (defun paste-to-osx (text &optional push)
+        (let ((process-connection-type nil))
+          (let ((proc (start-process "pbcopy" "*Messages*" "pbcopy")))
+            (process-send-string proc text)
+            (process-send-eof proc))))
+
+      (setq interprogram-cut-function 'paste-to-osx)
+      (setq interprogram-paste-function 'copy-from-osx))))
+
 ;; whitespace-mode
 ;; 全角空白　はRictyで可視化するため設定不要
 (require 'whitespace)
@@ -91,28 +121,6 @@
 
 ;; toggle comment
 (global-set-key (kbd "M-/")  'comment-dwim)
-
-;; system-type 判定
-;; from http://d.hatena.ne.jp/tomoya/20090807/1249601308
-(setq darwin-p (eq system-type 'darwin)
-      linux-p  (eq system-type 'gnu/linux)
-      carbon-p (eq system-type 'mac)
-      meadow-p (featurep 'meadow))
-
-;; Emacs と Mac のクリップボード共有
-;; from http://hakurei-shain.blogspot.com/2010/05/mac.html
-(defun copy-from-osx ()
-  (shell-command-to-string "pbpaste"))
-
-(defun paste-to-osx (text &optional push)
-  (let ((process-connection-type nil))
-    (let ((proc (start-process "pbcopy" "*Messages*" "pbcopy")))
-      (process-send-string proc text)
-      (process-send-eof proc))))
-
-(if (or darwin-p carbon-p)
-    (setq interprogram-cut-function 'paste-to-osx)
-  (setq interprogram-paste-function 'copy-from-osx))
 
 ;; find-functionをキー割り当てする
 (find-function-setup-keys)
