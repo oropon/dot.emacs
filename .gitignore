@@ -1,7 +1,9 @@
-elpa/
-auto-save-list/
-el-get/
-elisp/
+/auto-save-list/
+/el-get/
+/elisp/
+/elpa/
+/elscreen/
+/url/
+/ac-comphist.dat
+/projectile-bookmarks.eld
 *.elc
-ac-comphist.dat
-projectile-bookmarks.eld
