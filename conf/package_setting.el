@@ -254,3 +254,7 @@
 (setq migemo-coding-system 'utf-8-unix)
 (load-library "migemo")
 (migemo-init)
+
+;;---------
+;; wdired
+(define-key dired-mode-map "r" 'wdired-change-to-wdired-mode)
