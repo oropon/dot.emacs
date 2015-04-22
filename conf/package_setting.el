@@ -69,6 +69,9 @@
 ;;; header-lineの先頭に[<->]を表示しない
 (setq elscreen-tab-display-control nil)
 
+;; elscreen-persist
+(elscreen-persist-mode 1)
+
 ;;----------
 ;; open-junk-file
 ;;----------

@@ -38,6 +38,7 @@
     ;; セッション・ウィンドウ
     popwin
     elscreen
+    elscreen-persist
 
     ;; 括弧
     smartparens
