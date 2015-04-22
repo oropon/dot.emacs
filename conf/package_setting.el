@@ -76,16 +76,16 @@
 ;; open-junk-file
 ;;----------
 ;;;試行錯誤用ファイルを開くための設定
-(require 'open-junk-file)
 ;; C-x C-zで試行錯誤ファイルを開く
+(require 'open-junk-file)
 (global-set-key (kbd "C-x C-z") 'open-junk-file)
 
 ;;----------
 ;; lispxmp
 ;;----------
 ;;;式の評価結果を注釈するための設定
-(require 'lispxmp)
 ;; emacs-lisp-modeでC-c C-dを押すと注釈される
+(require 'lispxmp)
 (define-key emacs-lisp-mode-map (kbd "C-c C-d") 'lispxmp)
 
 ;;----------
@@ -97,8 +97,8 @@
 ;;----------
 ;; auto-async-byte-compile
 ;;----------
-(require 'auto-async-byte-compile)
 ;;自動バイトコンパイルを無効にするファイル名の正規表現
+(require 'auto-async-byte-compile)
 (setq auto-async-byte-compile-exclude-files-regexp "/junk/")
 (add-hook 'emacs-lisp-mode-hook 'enable-auto-async-byte-compile-mode)
 (add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
@@ -111,14 +111,12 @@
 ;; expand-region
 ;;----------
 ;; refs: http://qiita.com/ongaeshi/items/abd1016bf484c4e05ab1
-(require 'expand-region)
 (global-set-key (kbd "C-=") 'er/expand-region)
 (global-set-key (kbd "C-M-=") 'er/contract-region)
 
 ;;----------
 ;; multiple-cursors
 ;;----------
-(require 'multiple-cursors)
 (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
 (global-set-key (kbd "C->") 'mc/mark-next-like-this)
 (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
