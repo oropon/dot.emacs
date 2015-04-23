@@ -43,8 +43,10 @@
  'solarized
  '(font-lock-comment-face ((t (:foreground "#b58900")))) ; Comment
  '(font-lock-doc-face ((t (:foreground "#b58900")))) ; Comment
- '(font-lock-comment-delimiter-face ; Comment
-   ((t (:foreground "#b58900")))))
+ '(font-lock-comment-delimiter-face ((t (:foreground "#b58900")))) ; Comment
+ '(elscreen-tab-current-screen-face ((t (:foreground "#eee8d5"))))
+ '(elscreen-tab-background-face ((t (:foreground "#93a1a1"))))
+ '(elscreen-tab-other-screen-face ((t (:foreground "#93a1a1")))))
 
 (set-face-attribute 'whitespace-trailing nil
                     :foreground "DeepPink"
@@ -71,6 +73,9 @@
 
 ;; elscreen-persist
 (elscreen-persist-mode 1)
+
+(require 'elscreen-dired)
+(require 'elscreen-server)
 
 ;;----------
 ;; open-junk-file
