@@ -273,3 +273,18 @@
 (require 'server)
 (unless (server-running-p)
   (server-start))
+
+;;---------
+;; markdown
+;;---------
+(add-to-list 'auto-mode-alist '("\\.md\\'" . gfm-mode))
+(add-hook 'markdown-mode-hook
+          '(lambda ()
+             (set (make-local-variable 'whitespace-action) nil)))
+
+;; ファイル内容を標準入力で渡すのではなく、ファイル名を引数として渡すように設定
+(defun markdown-custom ()
+  "markdown-mode-hook"
+  (setq markdown-command-needs-filename t)
+  )
+(add-hook 'markdown-mode-hook '(lambda() (markdown-custom)))

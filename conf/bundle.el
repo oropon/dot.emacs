@@ -100,6 +100,9 @@
     enh-ruby-mode
     robe
 
+    ;; markdown
+    markdown-mode
+
     ;; Haskell
     haskell-mode
 
