@@ -110,6 +110,9 @@
     lispxmp
     auto-async-byte-compile
 
+    ;; JavaScript
+    js2-mode
+
     ;;----------
     ;; git
     ;;----------
