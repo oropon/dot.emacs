@@ -178,17 +178,26 @@
 
 ;;----------
 ;;haskell-mode
-;;(autoload 'haskell-mode "haskell-mode" nil t)
-;(autoload 'haskell-cabal "haskell-cabal" nil t)
 (add-to-list 'auto-mode-alist '("\\.hs$" . haskell-mode))
 (add-to-list 'interpreter-mode-alist '("runghc" . haskell-mode))
 (add-to-list 'interpreter-mode-alist '("runhaskell" . haskell-mode))
 
 ;;----------
 ;; ghc-mod
-(add-to-list 'exec-path (concat (getenv "HOME") "/.dotfiles/emacs/haskell/.cabal-sandbox/bin"))
+
+;; path
+(setenv "PATH"
+  (concat
+   "/usr/local/ghc/ghc-HEAD/bin" ":"    ;GHC
+   (getenv "PATH")
+  )
+)
+(add-to-list 'exec-path (concat (getenv "HOME") "/.dotfiles/emacs/haskell/.cabal-sandbox/bin")) ;ghc-mod
+(add-to-list 'exec-path (concat (getenv "HOME") "/.cabal/bin")) ;cabal
 (add-to-list 'load-path (concat (getenv "HOME") "/.dotfiles/emacs/haskell/.cabal-sandbox/share/x86_64-osx-ghc-7.8.2/ghc-mod-4.1.1"))   ;office
 (add-to-list 'load-path (concat (getenv "HOME") "/.dotfiles/emacs/haskell/.cabal-sandbox/share/x86_64-osx-ghc-7.8.3/ghc-mod-5.2.1.1")) ;home
+
+;; init
 (autoload 'ghc-init "ghc" nil t)
 (autoload 'ghc-debug "ghc" nil t)
 
