@@ -288,3 +288,12 @@
   (setq markdown-command-needs-filename t)
   )
 (add-hook 'markdown-mode-hook '(lambda() (markdown-custom)))
+
+;;--------
+;; web-mode
+;;--------
+(setq web-mode-code-indent-offset 2)
+(setq web-mode-markup-indent-offset 2)
+(setq web-mode-css-indent-offset 2)
+(setq web-mode-sql-indent-offset 2)
+(setq web-mode-attr-indent-offset 2)

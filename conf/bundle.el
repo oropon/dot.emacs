@@ -90,7 +90,7 @@
     auto-complete
 
     ;;----------
-    ;; 言語
+    ;; 言語/モード
     ;;----------
 
     ;; 構文チェック
@@ -109,6 +109,12 @@
     ;; elisp
     lispxmp
     auto-async-byte-compile
+
+    ;; HTML
+    web-mode
+
+    ;; php
+    php-mode
 
     ;; JavaScript
     js2-mode
